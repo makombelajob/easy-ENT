@@ -1,0 +1,90 @@
+{# Hérite du template de base (base.html.twig) pour garder une structure cohérente sur toutes les pages #}
+{% extends 'base.html.twig' %}
+
+{# Définit le titre de la page affiché dans l’onglet du navigateur #}
+{% block title %}a propos
+{% endblock %}
+
+{# Contenu principal de la page #}
+{% block body %}
+	<section
+		class="row" id="about">
+		{# Titre principal de la page #}
+		<div class="col-12 text-center my-3">
+			<h1 class="fs-1 fw-semibold">easy- <span class="text-uppercase fs-1 fw-semibold">ENT</span></h1>
+		</div>
+
+		{# Bloc contenant la section "À propos de nous" #}
+		<div class="col-12 col-md-12 m-auto text-center my-3">
+			<article class="alert alert-info">
+				<div class="text-center my-3">
+					<h2 class="fs-2 text-center text-black fw-semibold">A propos de nous</h2>
+				</div>
+				<p
+					class="fs-3">
+					{# Description de l'école easy-ENT et de sa vision inclusive et innovante #}
+					<strong>easy-ENT</strong>
+					est une école de technologie nouvelle génération, pensée pour former
+					                    les talents de
+					                    demain aux métiers du numérique et de l'innovation. Fondée avec la volonté de rendre l'apprentissage
+					                    de la tech accessible, concret et orienté vers l’avenir, easy-ENT propose des formations
+					                    modernes, intensives et en phase avec les besoins réels du marché.
+					
+					                    Nous croyons que la technologie n’est pas réservée à une élite : chacun a le potentiel de devenir
+					                    développeur, designer, data analyst ou expert en cybersécurité — à condition d’avoir les bons
+					                    outils, un accompagnement solide et un environnement stimulant.
+				</p>
+			</article>
+
+			{# Bloc décrivant la mission de l'école #}
+			<article class="alert alert-primary">
+				<div class="text-center my-3">
+					<h2 class="fs-2 text-center text-black fw-semibold">Notre mission</h2>
+				</div>
+				<p class="fs-3">
+					Former une nouvelle génération de professionnels capables de créer, innover et répondre aux grands
+					                    défis numériques. À travers une pédagogie par projet, un encadrement humain et des partenariats avec
+					                    les entreprises tech, nous préparons nos apprenants à intégrer rapidement le monde du travail.
+				</p>
+			</article>
+
+			{# Bloc listant les éléments différenciateurs de l'école #}
+			<article class="alert alert-success">
+				<div class="text-center my-3">
+					<h2 class="fs-2 text-center text-black fw-semibold">Ce sui nous distingue</h2>
+				</div>
+				<ul class="list-unstyled">
+					<li class="fs-2 my-2">
+						🚀 Formations pratiques & intensives
+						                        Apprends en faisant : nos programmes sont centrés sur des projets concrets et des mises en
+						                        situation professionnelles.
+					</li>
+					<li class="fs-2 my-2">
+						🌍 Accessibilité & diversité
+						                        easy-ENT accueille tous les profils, sans distinction d’origine ou de parcours académique.
+					</li>
+					<li class="fs-2 my-2">
+						🤝 Réseau d'experts & d'entreprises partenaires
+						                        Bénéficie du soutien d’un écosystème dynamique pour booster ta carrière.
+					</li>
+					<li class="fs-2 my-2">
+						🧠 Culture d'innovation
+						                        Nous mettons à jour nos programmes en continu pour suivre l’évolution des technologies.
+					</li>
+				</ul>
+			</article>
+
+			{# Bloc d’appel à l’action pour inciter les visiteurs à rejoindre l’école #}
+			<article class="alert alert-danger">
+				<div class="text-center my-3">
+					<h2 class="fs-2 text-center text-black fw-semibold">Réjoins la révolution</h2>
+				</div>
+				<p class="fs-3">
+					Chez easy-ENT, nous ne formons pas simplement des professionnels : nous formons les bâtisseurs du
+					                    futur numérique.
+				</p>
+			</article>
+		</div>
+	</section>
+{% endblock %}
+

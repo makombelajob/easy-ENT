@@ -1,0 +1,143 @@
+/* Définition de la taille de police de base pour tout le document */
+:root {
+    font-size: 15px;
+}
+$none : none;
+$bg-color: #121212;
+$card-color: #1e1e1e;
+$text-color: #e0e0e0;
+$border-color: #333;
+$accent-color: #3b82f6; // un bleu bien visible sur fond sombre
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: $bg-color !important;
+    color: $text-color !important;
+    font-family: "Open Sans", sans-serif;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5
+    {
+        font-family: "Ubuntu Sans", sans-serif;
+        color: lighten($text-color, 10%) !important;
+    }
+    a {
+        color: lighten($accent-color, 15%);
+        &:hover {
+          color: lighten($accent-color, 30%);
+        }
+      }
+    header {
+        margin-inline: 0.5rem;
+        nav {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+            border: 1px solid lightskyblue;
+            border-radius: 0 0 0.5rem 0.5rem;
+            background-color: rgba(96, 165, 250, 0.95) !important;
+            /* Style du logo ou image dans la navigation */
+            img {
+                width: 50px; /* Largeur fixée */
+                border-radius: 50%; /* Rend l'image circulaire */
+            }
+
+            #navbar {
+                background-color: rgb(59, 130, 246) !important; /* Couleur de fond forcée */
+                top: 30px; /* Position depuis le haut */
+                border-radius: 0.5rem 0.5rem;
+
+                button {
+                    margin-top: 0.7rem !important; /* Marge supérieure forcée pour le bouton */
+                }
+            }
+        }
+    }
+
+    main {
+        #a-propos {
+            // En cas de personnalisation
+        }
+
+        #partners {
+            img {
+                width: 60px; /* Largeur fixée pour les logos/avatars partenaires */
+                border-radius: 50%; /* Images rondes */
+            }
+        }
+
+        #upButton {
+            position: fixed; /* Position fixe pour rester visible au défilement */
+            bottom: 30px; /* Distance du bas de la fenêtre */
+            right: 30px; /* Distance du bord droit */
+        }
+
+        #team {
+            img {
+                width: 100px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+
+        #admin_dashboard,
+        #all_classes,
+        #all_subjects{
+            display: flex;
+            justify-content: space-between;
+            gap: 0.2rem;
+            flex-wrap: wrap;
+        }
+        #contactForm,
+        #inscription,
+        #connexion{
+            .is-invalid~.invalid-feedback {
+                display: block;
+            }
+        }
+        #tableList{
+            overflow-x: auto !important;
+        }
+    }
+}
+
+/* Mise en page adaptative pour les écrans de taille moyenne (tablettes et plus) */
+@media (min-width: 768px) {
+    body {
+        header{
+            /*width: 90%;
+            margin: auto;*/
+        }
+        main {
+            .main-activity,
+            .partners,
+            .team {
+                display: flex !important; /* Affichage en flexbox pour aligner les éléments */
+                justify-content: space-between !important; /* Répartition avec espace entre les éléments */
+                gap: 0.7rem !important; /* Espacement entre les éléments */
+            }
+        }
+    }
+}
+
+/* Cacher la barre de navigation pour les grands écrans (≥ 1024px) */
+@media(min-width: 1024px) {
+    body {
+        header {
+            width: 90%;
+            margin: auto;
+
+            nav {
+                #navbar {
+                    display: none !important; /* Masquer la barre de navigation */
+                }
+            }
+        }
+
+        main {
+            #about {
+                /* Rien à faire pour l'instant */
+            }
+        }
+    }
+}

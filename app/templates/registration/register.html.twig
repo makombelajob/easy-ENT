@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+{% block javascripts %}
+	{#<script src="{{ asset('js/modules/inscription.js') }}" defer ></script>#}
+{% endblock %}
+{% block body %}
+	<div class="d-flex justify-content-center align-items-center min-vh-100">
+		<div class="col-11 col-md-10 col-lg-6 alert alert-success">
+			<div class="col-12 text-center my-3">
+				<h1 class="text-uppercase fs-1">Inscription</h1>
+			</div>
+
+			{{ form_errors(registrationForm) }}
+
+			{{ form_start(registrationForm, {'attr' : {'id': 'inscription'}}) }}
+			<div class="fs-2 mb-3">
+				<div>
+					<svg class="" width="20" height="20">
+						<use href="{{ asset('images/sprites.svg') }}#email"></use>
+					</svg>
+					{{ form_label(registrationForm.email) }}
+					{{ form_widget(registrationForm.email) }}
+				</div>
+				<div class="invalid-feedback">
+					L'email doit être valide
+				</div>
+			</div>
+
+			<div class="fs-2 mb-3">
+				<div>
+					<svg class="" width="30" height="30">
+						<use href="{{ asset('images/sprites.svg') }}#password"></use>
+					</svg>
+					{{ form_label(registrationForm.plainPassword) }}
+					{{ form_widget(registrationForm.plainPassword) }}
+				</div>
+			</div>
+
+			<div class="fs-2 mb-3">
+				<div>
+					<svg class="" width="30" height="30">
+						<use href="{{ asset('images/sprites.svg') }}#lastname"></use>
+					</svg>
+					{{ form_label(registrationForm.lastname) }}
+					{{ form_widget(registrationForm.lastname) }}
+				</div>
+				<div class="invalid-feedback">
+					Le nom doit contenir entre 2 et 100 caractères
+				</div>
+			</div>
+
+			<div class="fs-2 mb-3">
+				<div>
+					<svg class="" width="30" height="30">
+						<use href="{{ asset('images/sprites.svg') }}#firstname"></use>
+					</svg>
+					{{ form_label(registrationForm.firstname) }}
+					{{ form_widget(registrationForm.firstname) }}
+				</div>
+				<div class="invalid-feedback">
+					Le prénom doit contenir entre 2 et 100 caractères
+				</div>
+			</div>
+
+			<div class="fs-2 mb-3">
+				{{ form_row(registrationForm.agreeTerms) }}
+			</div>
+
+			<div class="text-center">
+				{{ form_row(registrationForm.Inscription) }}
+			</div>
+			{{ form_end(registrationForm) }}
+		</div>
+	</div>
+{% endblock %}
+

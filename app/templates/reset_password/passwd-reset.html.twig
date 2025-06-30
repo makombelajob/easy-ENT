@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div method="post" class="alert alert-primary col-11 col-md-8 m-auto">
+			<div class="col-12 text-center">
+				<h1 class="fs-1 text-uppercase fw-semibold">Réinitialiser le mots de passe</h1>
+			</div>
+			{{ form_start(form)}}
+			<div class="fs-3">
+				{{ form_row(form.plainPassword)}}
+				<div class="invalid-feedback">
+					Veuillez entrer un email valide
+				</div>
+			</div>
+			<div class="text-center my-3">
+				{{ form_row(form.reset)}}
+			</div>
+			{{ form_end(form)}}
+		</div>
+	</div>
+{% endblock %}
+

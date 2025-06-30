@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Horaires
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
+	<script src="{{ asset('js/modules/calendar.js') }}" defer></script>
+	<script>
+    	window.horaires = {{ horaire|raw }};
+	</script>
+
+{% endblock %}
+
+{% block body %}
+
+	<section class="row  d-flex justify-content-center align-items-center min-vh-100">
+		<div class="col-11 col-md-11 m-auto alert alert-success">
+			<div class="my-3 text-center">
+				<h1 class="fs-1 text-uppercase text-primary">Jours des cours</h1>
+			</div>
+			<div id="calendar"></div>
+		</div>
+	</section>
+{% endblock %}
+

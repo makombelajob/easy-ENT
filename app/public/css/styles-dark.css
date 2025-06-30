@@ -1,0 +1,107 @@
+@charset "UTF-8";
+/* Définition de la taille de police de base pour tout le document */
+:root {
+  font-size: 15px;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+  font-family: "Open Sans", sans-serif;
+}
+body h1,
+body h2,
+body h3,
+body h4,
+body h5 {
+  font-family: "Ubuntu Sans", sans-serif;
+  color: #fafafa !important;
+}
+body a {
+  color: #84b1f9;
+}
+body a:hover {
+  color: #cddffd;
+}
+body header {
+  margin-inline: 0.5rem;
+}
+body header nav {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);
+  border: 1px solid lightskyblue;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-color: rgba(96, 165, 250, 0.95) !important;
+  /* Style du logo ou image dans la navigation */
+}
+body header nav img {
+  width: 50px; /* Largeur fixée */
+  border-radius: 50%; /* Rend l'image circulaire */
+}
+body header nav #navbar {
+  background-color: rgb(59, 130, 246) !important; /* Couleur de fond forcée */
+  top: 30px; /* Position depuis le haut */
+  border-radius: 0.5rem 0.5rem;
+}
+body header nav #navbar button {
+  margin-top: 0.7rem !important; /* Marge supérieure forcée pour le bouton */
+}
+body main #partners img {
+  width: 60px; /* Largeur fixée pour les logos/avatars partenaires */
+  border-radius: 50%; /* Images rondes */
+}
+body main #upButton {
+  position: fixed; /* Position fixe pour rester visible au défilement */
+  bottom: 30px; /* Distance du bas de la fenêtre */
+  right: 30px; /* Distance du bord droit */
+}
+body main #team img {
+  width: 100px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body main #admin_dashboard,
+body main #all_classes,
+body main #all_subjects {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.2rem;
+  flex-wrap: wrap;
+}
+body main #contactForm .is-invalid ~ .invalid-feedback,
+body main #inscription .is-invalid ~ .invalid-feedback,
+body main #connexion .is-invalid ~ .invalid-feedback {
+  display: block;
+}
+body main #tableList {
+  overflow-x: auto !important;
+}
+
+/* Mise en page adaptative pour les écrans de taille moyenne (tablettes et plus) */
+@media (min-width: 768px) {
+  body header {
+    /*width: 90%;
+    margin: auto;*/
+  }
+  body main .main-activity,
+  body main .partners,
+  body main .team {
+    display: flex !important; /* Affichage en flexbox pour aligner les éléments */
+    justify-content: space-between !important; /* Répartition avec espace entre les éléments */
+    gap: 0.7rem !important; /* Espacement entre les éléments */
+  }
+}
+/* Cacher la barre de navigation pour les grands écrans (≥ 1024px) */
+@media (min-width: 1024px) {
+  body header {
+    width: 90%;
+    margin: auto;
+  }
+  body header nav #navbar {
+    display: none !important; /* Masquer la barre de navigation */
+  }
+  body main #about {
+    /* Rien à faire pour l'instant */
+  }
+}/*# sourceMappingURL=styles-dark.css.map */

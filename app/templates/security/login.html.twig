@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ asset('js/modules/connexion.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex justify-content-center align-items-center min-vh-100">
+		<form method="post" class="alert alert-primary col-11 col-md-8 col-lg-6" id="connexion">
+			{% if error %}
+				<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			{% endif %}
+			{% for label, messages in app.flashes %}
+				{% for message in messages %}
+					<div class="alert alert-{{ label == 'error' ? 'danger' : label }}">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endfor %}
+
+			<div class="col-12 text-center">
+				<h1 class="fs-1 text-uppercase fw-semibold">Connexion</h1>
+			</div>
+
+			<div class="form-group">
+				<div class="d-flex align-items-center my-2">
+					<svg class="mb-2" width="20" height="20">
+						<use href="{{ asset('images/sprites.svg') }}#email"></use>
+					</svg>
+					<label class="form-label fs-2" for="username">Email</label>
+				</div>
+				<input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control fs-3" autocomplete="email" required autofocus placeholder="Entrez votre email">
+				<div class="invalid-feedback fs-4">
+					L'email doit être valide
+				</div>
+			</div>
+
+			<div>
+				<div class="d-flex align-items-center my-2">
+					<svg class="" width="30" height="30">
+						<use href="{{ asset('images/sprites.svg') }}#password"></use>
+					</svg>
+					<label class="form-label fs-2" for="password">Password</label>
+				</div>
+				<input type="password" name="_password" id="password" class="form-control fs-3" autocomplete="current-password" required placeholder="Entrez votre mot de passe">
+				<input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+			</div>
+
+			<div class="d-flex justify-content-between justify-content-center my-3">
+				<div class="checkbox mb-3">
+					<input type="checkbox" name="_remember_me" id="_remember_me">
+					<label for="_remember_me">Sauvegarder</label>
+				</div>
+				<div>
+					<a href="{{ path('app_reset_password') }}">Réinitialisation</a>
+				</div>
+			</div>
+
+			<div class="text-center my-3">
+				<button class="btn btn-lg btn-primary" type="submit" disabled id="loginBtn">
+					Sign in
+				</button>
+			</div>
+		</form>
+	</div>
+{% endblock %}
+
