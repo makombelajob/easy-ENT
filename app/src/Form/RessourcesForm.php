@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\Courses;
 use App\Entity\Ressources;
-use App\Entity\Subjects;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -13,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -21,7 +21,7 @@ class RessourcesForm extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('fileName', FileType::class, [
+            ->add('fileName', TextType::class, [
                 'label' => 'Nom du fichier',
                 'attr' => [
                     'placeholder' => 'Veuillez entrer le nom',
@@ -36,6 +36,18 @@ class RessourcesForm extends AbstractType
                         maxMessage: 'Au plus {{ limit }} caractères autorisés'
                     )
                 ]
+            ])
+            ->add('file', FileType::class, [ // <- ici le vrai champ de fichier
+                'label' => 'Fichier à importer',
+            'mapped' => false,
+            'required' => true,
+            'constraints' => [
+            new NotBlank(['message' => 'Veuillez télécharger un fichier']),
+            new File([
+                'maxSize' => '10M',
+                'mimeTypesMessage' => 'Ce type de fichier n\'est pas autorisé',
+            ])
+        ]
             ])
             ->add('fileType', TextType::class, [
                 'label' => 'Type du fichier',

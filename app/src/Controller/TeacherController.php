@@ -32,6 +32,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 // Attribut pour définir les routes
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 final class TeacherController extends AbstractController
 {
@@ -52,7 +53,7 @@ final class TeacherController extends AbstractController
 
     // Route pour ajouter une ressource/document, accessible via /teacher/ajout-document
     #[Route('/teacher/ajout-document', name: 'app_teacher_add_ressource')]
-    public function addRessource(Request $request, EntityManagerInterface $entityManager): Response
+    public function addRessource(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         // Restriction accès aux enseignants
         $this->denyAccessUnlessGranted('ROLE_TEACHER');
@@ -68,6 +69,37 @@ final class TeacherController extends AbstractController
 
         // Si formulaire soumis et valide, persiste la ressource en base
         if ($form->isSubmitted() && $form->isValid()) {
+            /**
+             * @var
+             */
+            $uploadedFile = $form->get('file')->getData();
+
+            if($uploadedFile) {
+                // Récupération du fichier
+                $originalName = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                
+                // Nettoyage du nom
+                $safeName = $slugger->slug($originalName);
+
+                // Récupération de l'extension
+                $extension = $uploadedFile->guessExtension();
+
+                // Attribution du nouveau nom
+                $newFileName = $safeName . '-' .uniqid() . '.' . $extension;
+
+                // Chémin de stockage 
+                $path = $this->getParameter('uploads_directory');
+
+                // Déplacer le ficher dans uploads
+                $uploadedFile->move($path, $newFileName);
+
+                // Enregistrement dans la base
+                $cours->setFileName($newFileName);
+                $cours->setFileType($extension);
+            }
+
+
+            /// Persiter le nom dans la base
             $entityManager->persist($cours);
             $entityManager->flush();
 
