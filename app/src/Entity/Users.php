@@ -86,6 +86,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: self::class, mappedBy: 'parent')]
     private Collection $users;
 
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $avatar = 'default-avatar.webp';
+
     public function __construct()
     {
         $this->courses = new ArrayCollection();
@@ -385,6 +388,18 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         if ($this->users->removeElement($user)) {
             $user->removeParent($this);
         }
+
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(?string $avatar): static
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }

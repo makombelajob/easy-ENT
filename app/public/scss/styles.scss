@@ -129,6 +129,14 @@ body {
         #tableList{
             overflow-x: auto !important;
         }
+        #student_info{
+            #avatar-link{
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                transform: translateX(50%, -50%);
+            }
+        }
     }
 }
 

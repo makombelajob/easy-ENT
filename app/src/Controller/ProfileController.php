@@ -7,12 +7,14 @@ use App\Entity\Contacts;
 use App\Entity\Users;
 // Import des formulaires personnalisés pour ajouter un parent et pour contact étudiant
 use App\Form\AddParentForm;
+use App\Form\AvatarForm;
 use App\Form\StudentsContactForm;
 use App\Repository\UsersRepository;
 // Service pour l'envoi d'emails
 use App\Service\EmailService;
 // Gestionnaire d'entités Doctrine pour gérer la base de données
 use Doctrine\ORM\EntityManagerInterface;
+use Dom\Attr;
 // Contrôleur de base Symfony
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // Service de sécurité pour accéder à l'utilisateur connecté
@@ -57,7 +59,6 @@ final class ProfileController extends AbstractController
 
         // Crée un formulaire de contact étudiant avec l'objet Contact
         $studentMessage = $this->createForm(StudentsContactForm::class, $contact);
-
         // Rend la vue profile/index.html.twig en passant les variables nécessaires
         return $this->render('profile/index.html.twig', compact('studentMessage', 'classes', 'parents'));
     }
@@ -151,4 +152,14 @@ final class ProfileController extends AbstractController
         // Si formulaire non soumis ou invalide, affiche la page avec le formulaire
         return $this->render('profile/add-parent.html.twig', compact('form'));
     }
+
+
+    #[Route('upload/avatar', name:'app_upload_avatar')]
+    public function uploadAvatar(): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        $form = $this->createForm(AvatarForm::class);
+        return $this->render('profile/avatar.html.twig', compact('form'));
+    }
+
 }

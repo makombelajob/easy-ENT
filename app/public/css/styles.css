@@ -105,6 +105,12 @@ body main #connexion .is-invalid ~ .invalid-feedback {
 body main #tableList {
   overflow-x: auto !important;
 }
+body main #student_info #avatar-link {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translateX(50%, -50%);
+}
 
 /* Mise en page adaptative pour les écrans de taille moyenne (tablettes et plus) */
 @media (min-width: 768px) {

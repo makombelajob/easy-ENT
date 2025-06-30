@@ -88,7 +88,7 @@ final class TeacherController extends AbstractController
                 $newFileName = $safeName . '-' .uniqid() . '.' . $extension;
 
                 // Chémin de stockage 
-                $path = $this->getParameter('uploads_directory');
+                $path = $this->getParameter('uploads_documents_directory');
 
                 // Déplacer le ficher dans uploads
                 $uploadedFile->move($path, $newFileName);
