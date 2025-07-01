@@ -14,7 +14,7 @@ use App\Repository\UsersRepository;
 use App\Service\EmailService;
 // Gestionnaire d'entités Doctrine pour gérer la base de données
 use Doctrine\ORM\EntityManagerInterface;
-use Dom\Attr;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 // Contrôleur de base Symfony
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 // Service de sécurité pour accéder à l'utilisateur connecté
@@ -27,6 +27,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 // Service pour le hachage des mots de passe utilisateurs
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 final class ProfileController extends AbstractController
 {
@@ -155,10 +156,92 @@ final class ProfileController extends AbstractController
 
 
     #[Route('upload/avatar', name:'app_upload_avatar')]
-    public function uploadAvatar(): Response
+    public function uploadAvatar(EntityManagerInterface $entityManagerInterface, Request $request, SluggerInterface $slugger): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
         $form = $this->createForm(AvatarForm::class);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            // Récupération de l'image
+            $avatar = $form->get('avatar')->getData();
+
+            $originaleName = pathinfo($avatar->getClientOriginalName(), PATHINFO_FILENAME);
+
+            // Nettoyage du nom
+            $cleanName = strtolower($slugger->slug($originaleName));
+            $extension = $avatar->guessExtension();
+
+            // Nouveau nom de la photo
+            $newFileName = $cleanName . '-' . uniqid() . '.' . $extension;
+            $path = $this->getParameter('uploads_avatars_directory');
+            /**
+             * @var Users $user
+             */
+            // Récupération de l'utilisateur
+            $user = $this->getUser();
+            // Enregistrement du nouveau nom dans la base
+            $user->setAvatar($newFileName);
+
+            // Récuperation du type de l'image
+            $mime = $avatar->getMimeType();
+            
+            switch ($mime) {
+                case 'image/jpeg' :
+                    $sourcePicture = imagecreatefromjpeg($avatar->getPathname());
+                    break;
+                case 'image/png' :
+                    $sourcePicture = imagecreatefrompng($avatar->getPathname());
+                    break;
+                case 'image/webp' :
+                    $sourcePicture = imagecreatefromwebp($avatar->getPathname());
+                    break;
+                default :
+                    throw new \Exception('Uniquement jpeg, png et  webp sont autorisée');
+            }
+            $pictureInfo = getimagesize($avatar);
+            
+            //Taille initiale
+            $pictureWidth = $pictureInfo[0];
+            $pictureHeight = $pictureInfo[1];
+
+            // Taille finale
+            $destWidth = 150;
+            $destHeight = 150;
+
+            // Géneration de la nouvelle image
+            $destPicture = imagecreatetruecolor($destWidth, $destHeight);
+
+            // Rogner l'image
+            imagecopyresampled(
+                $destPicture,
+                $sourcePicture,
+                0,
+                0,
+                0,
+                0,
+                $destWidth,
+                $destHeight,
+                $pictureWidth,
+                $pictureHeight
+            );
+            switch($mime) {
+                case 'image/jpeg' :
+                    imagejpeg($destPicture, $path . $newFileName, 90);
+                    break;
+                case 'image/png' :
+                    imagepng($destPicture, $path . $newFileName);
+                    break;
+                case 'image/webp' :
+                    imagewebp($destPicture, $path . $newFileName);
+                    break;
+            }
+            imagedestroy($destPicture);
+            imagedestroy($sourcePicture);
+
+            $entityManagerInterface->flush();
+            return $this->redirectToRoute('app_profile');
+        }
         return $this->render('profile/avatar.html.twig', compact('form'));
     }
 

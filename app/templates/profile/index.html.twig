@@ -14,14 +14,14 @@
 		</div>
 		<article class="alert alert-info ">
 			<div class="row  d-flex justify-content-between align-items-center gap-2">
-				<div class="col-4 position-relative">
-					<img src="{{ asset('uploads/avatars/default-avatar.webp') }}" alt="image de profile de {{ app.user.lastname }}{{ app.user.firstname }}" width="100" heigth="auto" class="col rounded-circle">
-					<a class="btn btn-sm btn-primary position-absolute" href="{{ path('app_upload_avatar') }}" id="avatar-link">modifier</a>
+				<div class="col-4" id="profile">
+					<img src="{{ asset('uploads/avatars/' ~ (app.user.avatar ?? 'default-avatar.webp')) }}" alt="image de profile de {{ app.user.lastname }}{{ app.user.firstname }}" width="100" heigth="auto" class="col rounded-circle profile-image">
+					<a class="btn btn-sm btn-primary edit-link" href="{{ path('app_upload_avatar') }}" >Edit</a>
 				</div>
 				<figcaption class="col-7">
 					<h3>{{ app.user.lastname }}
 						{{ app.user.firstname }}</h3>
-					<p>Ceci est votre pge d'accueil, Bienvenu parmis nous</p>
+					<p>Ceci est votre page d'accueil, Bienvenu parmis nous</p>
 				</figcaption>
 			</div>
 		</article>

@@ -8,7 +8,6 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -39,13 +38,13 @@ class RessourcesForm extends AbstractType
             ])
             ->add('file', FileType::class, [ // <- ici le vrai champ de fichier
                 'label' => 'Fichier à importer',
-            'mapped' => false,
-            'required' => true,
-            'constraints' => [
-            new NotBlank(['message' => 'Veuillez télécharger un fichier']),
-            new File([
-                'maxSize' => '10M',
-                'mimeTypesMessage' => 'Ce type de fichier n\'est pas autorisé',
+                'mapped' => false,
+                'required' => true,
+                'constraints' => [
+                    new NotBlank(['message' => 'Veuillez télécharger un fichier']),
+                     new File([
+                        'maxSize' => '10M',
+                        'mimeTypesMessage' => 'Ce type de fichier n\'est pas autorisé',
             ])
         ]
             ])
