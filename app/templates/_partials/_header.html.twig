@@ -50,7 +50,7 @@
 												<a class="text-decoration-none fs-3" href="{{ path('app_admin_school_fees') }}">Frais</a>
 											</li>
 											<li>
-												<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Déconnecter</a>
+												<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Deconnecter</a>
 											</li>
 										{% elseif is_granted('ROLE_TEACHER') %}
 											<li>
@@ -73,7 +73,7 @@
 												<a class="text-decoration-none fs-3" href="{{ path('app_parents_show_facture') }}">Factures</a>
 											</li>
 											<li>
-												<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Déconnecter</a>
+												<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Deconnecter</a>
 											</li>
 										{% elseif is_granted('ROLE_USER') %}
 											<li>
@@ -86,7 +86,7 @@
 												<a class="text-decoration-none fs-3" href="{{ path('app_profile') }}#contact">Contact_Admin</a>
 											</li>
 											<li>
-												<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Déconnecter</a>
+												<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Deconnecter</a>
 											</li>
 										{% endif %}
 									{% else %}

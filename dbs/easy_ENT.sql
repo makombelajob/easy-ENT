@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: database
--- Generation Time: Jun 30, 2025 at 01:00 PM
+-- Generation Time: Jul 01, 2025 at 12:53 PM
 -- Server version: 8.0.42
 -- PHP Version: 8.2.28
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `classes` (
   `id` int NOT NULL,
-  `name` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `level` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -48,9 +48,9 @@ INSERT INTO `classes` (`id`, `name`, `level`) VALUES
 
 CREATE TABLE `contacts` (
   `id` int NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subject` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `message` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `send_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime_immutable)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -71,12 +71,12 @@ CREATE TABLE `courses` (
   `id` int NOT NULL,
   `subjects_id` int NOT NULL,
   `classes_id` int NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `coefficient` double NOT NULL,
-  `day` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `day` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `start_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime_immutable)',
   `end_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime_immutable)',
-  `room` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
+  `room` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -94,7 +94,7 @@ INSERT INTO `courses` (`id`, `subjects_id`, `classes_id`, `name`, `coefficient`,
 --
 
 CREATE TABLE `doctrine_migration_versions` (
-  `version` varchar(191) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `version` varchar(191) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `executed_at` datetime DEFAULT NULL,
   `execution_time` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
@@ -104,9 +104,8 @@ CREATE TABLE `doctrine_migration_versions` (
 --
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20250629111751', '2025-06-29 11:18:06', 275),
-('DoctrineMigrations\\Version20250629112008', '2025-06-29 11:20:12', 23),
-('DoctrineMigrations\\Version20250629141915', '2025-06-29 14:19:28', 28);
+('DoctrineMigrations\\Version20250630140421', '2025-06-30 14:05:50', 95),
+('DoctrineMigrations\\Version20250701122011', '2025-07-01 12:21:08', 381);
 
 -- --------------------------------------------------------
 
@@ -116,9 +115,9 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 
 CREATE TABLE `messenger_messages` (
   `id` bigint NOT NULL,
-  `body` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `headers` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue_name` varchar(190) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `body` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `headers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue_name` varchar(190) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `available_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `delivered_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)'
@@ -132,8 +131,8 @@ CREATE TABLE `messenger_messages` (
 
 CREATE TABLE `ressources` (
   `id` int NOT NULL,
-  `file_name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file_type` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file_type` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `upload_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime_immutable)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -143,7 +142,9 @@ CREATE TABLE `ressources` (
 
 INSERT INTO `ressources` (`id`, `file_name`, `file_type`, `upload_at`) VALUES
 (1, 'Book_Introduction_à_php.pdf', 'pdf', '2025-06-29 17:22:26'),
-(2, '/tmp/php2l0cuebjfgiq8QX8WdX', 'pdf', '2025-06-30 08:40:29');
+(2, '/tmp/php2l0cuebjfgiq8QX8WdX', 'pdf', '2025-06-30 08:40:29'),
+(3, 'cours-java-complet-686292e203e0a.pdf', 'pdf', '2025-06-30 13:36:34'),
+(4, 'cours-java-complet-686295928d8b2.pdf', 'pdf', '2025-06-30 13:48:02');
 
 -- --------------------------------------------------------
 
@@ -176,7 +177,7 @@ CREATE TABLE `results` (
   `note` int NOT NULL,
   `anual_note` int DEFAULT NULL,
   `mensual_note` int DEFAULT NULL,
-  `remark` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -188,7 +189,7 @@ CREATE TABLE `results` (
 CREATE TABLE `school_fees` (
   `id` int NOT NULL,
   `users_id` int NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `amount` int NOT NULL,
   `send_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime_immutable)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -201,7 +202,7 @@ CREATE TABLE `school_fees` (
 
 CREATE TABLE `subjects` (
   `id` int NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -220,27 +221,28 @@ INSERT INTO `subjects` (`id`, `name`) VALUES
 
 CREATE TABLE `users` (
   `id` int NOT NULL,
-  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(180) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `roles` json NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `firstname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `lastname` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `register_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '(DC2Type:datetime_immutable)',
   `last_connection_at` datetime DEFAULT NULL COMMENT '(DC2Type:datetime_immutable)',
-  `reset_token` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `reset_token` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `roles`, `password`, `firstname`, `lastname`, `register_at`, `last_connection_at`, `reset_token`) VALUES
-(2, 'avatar@upload.done', '[\"ROLE_ADMIN\"]', '$2y$13$sRCkV.fR91xWetuoPuP.Iuc2/kAz8162ufxai.J3XglRz5XoJeJ.i', 'Johnny', 'Job', '2025-06-29 12:11:21', '2025-06-30 12:01:03', NULL),
-(3, 'brigitte.lambert@gmail.fr', '[\"ROLE_USER\"]', '$2y$13$AehztV9PaozyTDXLcmPy8u/uDkDtgWy4zZqNClTCYEdVPMfelmsM6', 'Macroniste', 'Brigitte', '2025-06-29 12:33:17', '2025-06-30 08:42:34', NULL),
-(4, 'testing@mon-hebergeur.fr', '[\"ROLE_PARENT\"]', '$2y$13$QiJBf2LV/EwpBPS7CJCQJ.UW28WzmtTmfvvtp1zoeTQE1yFGQ..AK', 'responsable', 'Monpapa', '2025-06-29 12:44:18', NULL, NULL),
-(6, 'christine.robert@example.com', '[\"ROLE_USER\"]', '$2y$13$V9Z0Q8q/E/N4p3NlQju6sOMuAGfbg9sQsCJKFTHcG6K29iNi.Jod2', 'Chretiènne', 'Christine', '2025-06-29 13:23:41', NULL, NULL),
-(7, 'leonard@hotmail.cd', '[\"ROLE_PARENT\"]', '$2y$13$KD9MfU97ot1sAnFoVIhg7e85ACf5BAySnvZw0YHuNLLkcIjH9lVZi', 'Devinci', 'Leonard', '2025-06-29 13:25:42', NULL, NULL),
-(8, 'claire79@guillet.fr', '[\"ROLE_TEACHER\"]', '$2y$13$Q9hz0tglolM2kSirPdUL.eUDeE/KZSrQ9IrSo3lZtW9sWUNsfcKZC', 'backend', 'Ensignant', '2025-06-29 13:27:49', '2025-06-30 12:00:03', NULL);
+INSERT INTO `users` (`id`, `email`, `roles`, `password`, `firstname`, `lastname`, `register_at`, `last_connection_at`, `reset_token`, `avatar`) VALUES
+(2, 'avatar@upload.done', '[\"ROLE_ADMIN\"]', '$2y$13$sRCkV.fR91xWetuoPuP.Iuc2/kAz8162ufxai.J3XglRz5XoJeJ.i', 'Johnny', 'Job', '2025-06-29 12:11:21', '2025-07-01 12:26:46', NULL, NULL),
+(3, 'brigate.lambert@gmail.fr', '[\"ROLE_USER\"]', '$2y$13$AehztV9PaozyTDXLcmPy8u/uDkDtgWy4zZqNClTCYEdVPMfelmsM6', 'Brigate', 'symfony', '2025-06-29 12:33:17', '2025-07-01 12:27:14', NULL, 'jungo-6863da29c8bdd.png'),
+(4, 'testing@mon-hebergeur.fr', '[\"ROLE_PARENT\"]', '$2y$13$QiJBf2LV/EwpBPS7CJCQJ.UW28WzmtTmfvvtp1zoeTQE1yFGQ..AK', 'responsable', 'Monpapa', '2025-06-29 12:44:18', NULL, NULL, NULL),
+(6, 'christine.robert@example.com', '[\"ROLE_USER\"]', '$2y$13$V9Z0Q8q/E/N4p3NlQju6sOMuAGfbg9sQsCJKFTHcG6K29iNi.Jod2', 'Chretiènne', 'Christine', '2025-06-29 13:23:41', NULL, NULL, NULL),
+(7, 'leonard@hotmail.cd', '[\"ROLE_PARENT\"]', '$2y$13$KD9MfU97ot1sAnFoVIhg7e85ACf5BAySnvZw0YHuNLLkcIjH9lVZi', 'Devinci', 'Leonard', '2025-06-29 13:25:42', NULL, NULL, NULL),
+(8, 'claire79@guillet.fr', '[\"ROLE_TEACHER\"]', '$2y$13$Q9hz0tglolM2kSirPdUL.eUDeE/KZSrQ9IrSo3lZtW9sWUNsfcKZC', 'backend', 'Ensignant', '2025-06-29 13:27:49', '2025-07-01 08:53:15', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -270,6 +272,13 @@ CREATE TABLE `users_courses` (
   `users_id` int NOT NULL,
   `courses_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users_courses`
+--
+
+INSERT INTO `users_courses` (`users_id`, `courses_id`) VALUES
+(3, 1);
 
 -- --------------------------------------------------------
 
@@ -427,7 +436,7 @@ ALTER TABLE `messenger_messages`
 -- AUTO_INCREMENT for table `ressources`
 --
 ALTER TABLE `ressources`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `results`

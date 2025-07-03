@@ -13,7 +13,9 @@
 	{# SECTION: Titre principal de la page #}
 	<section class="row">
 		<div class="col-12 text-center my-3">
-			<h1 class="fs-1 fw-semibold">easy- <span class="text-uppercase fs-1 fw-semibold">ENT</span></h1>
+			<h1 class="fs-1 fw-semibold">easy-
+				<span class="text-uppercase fs-1 fw-semibold">ENT</span>
+			</h1>
 		</div>
 		{# SECTION: Carousel (diaporama d’images) #}
 		<div
@@ -51,66 +53,44 @@
 	</section>
 
 	{# SECTION: À propos de l’école #}
-	<section class="row" id="a-propos">
+	<section class="row" id="a-propos" aria-label="Section à propos de l'ENT">
 		<div class="text-center col-12 my-3">
-			<h2 class="fs-2 text-uppercase fw-semibold">A propos</h2>
+			<h2 class="fs-2 text-uppercase fw-semibold">À propos</h2>
 		</div>
+
 		<div class="col-11 m-auto">
 			<div
 				class="row justify-content-between">
-				{# Article 1 : Mission #}
+
+				<!-- Article 1 : Notre Mission -->
 				<article class="col-md-5 card mb-3">
 					<img class="card-image" src="{{ asset('images/real/entree_principale.png') }}" alt="Image des écoliers" width="100%" height="auto">
 					<div class="card-body">
 						<h2 class="card-title fs-2 text-uppercase">Notre Mission</h2>
-						<p class="card-text fs-3">Offrir un accès numérique simple à l’éducation pour tous.</p>
+						<p class="card-text fs-3">Rendre l’éducation accessible, intuitive et numérique pour tous les élèves, enseignants...
+						</p>
 						<div class="text-center my-2">
 							<a class="fs-3 btn btn-primary" href="{{ path('app_about') }}">Savoir plus</a>
 						</div>
 					</div>
 				</article>
 
-				{# Article 2 : Équipe #}
+				<!-- Article 2 : Notre équipe -->
 				<article class="col-md-5 card mb-3">
 					<img class="card-image" src="{{ asset('images/real/un_proffesseur_prepare_le_cours.png') }}" alt="Image des écoliers" width="100%" height="auto">
 					<div class="card-body">
 						<h2 class="card-title fs-2 text-uppercase">Notre équipe</h2>
-						<p class="card-text fs-3">Des experts passionnés par l’innovation dans le domaine
-							                            éducatif.</p>
+						<p class="card-text fs-3">Construire une école numérique inclusive, où chaque élève peut progresser à son rythme.</p>
 						<div class="text-center my-2">
 							<a class="fs-3 btn btn-primary" href="{{ path('app_about') }}">Savoir plus</a>
 						</div>
 					</div>
 				</article>
 
-				{# Article 3 : Plateforme #}
-				<article class="col-md-5 card mb-3">
-					<img class="card-image" src="{{ asset('images/real/image_de_salle.png') }}" alt="Image des écoliers" width="100%" height="auto">
-					<div class="card-body">
-						<h2 class="card-title fs-2 text-uppercase">Notre plateforme</h2>
-						<p class="card-text fs-3">Un espace sécurisé, collaboratif et accessible pour chaque
-							                            élève.</p>
-						<div class="text-center my-2">
-							<a class="fs-3 btn btn-primary" href="{{ path('app_about') }}">Savoir plus</a>
-						</div>
-					</div>
-				</article>
-
-				{# Article 4 : Valeurs #}
-				<article class="col-md-5 card mb-3">
-					<img class="card-image" src="{{ asset('images/real/bureau_cordinateur.png') }}" alt="Image des écoliers" width="100%" height="auto">
-					<div class="card-body">
-						<h2 class="card-title fs-2 text-uppercase">Nos valeurs</h2>
-						<p class="card-text fs-3">Inclusion, innovation, engagement et excellence au service des
-							                            apprenants.</p>
-						<div class="text-center my-2">
-							<a class="fs-3 btn btn-primary" href="{{ path('app_about') }}">Savoir plus</a>
-						</div>
-					</div>
-				</article>
 			</div>
 		</div>
 	</section>
+
 
 	{# SECTION: Activités proposées par l’école #}
 	<section class="row" id="activities">
@@ -131,7 +111,8 @@
 					</div>
 					<div class="card-body">
 						<h2 class="card-title fs-1">Sciences et découvertes</h2>
-						<p class="card-text fs-4">Explorer le monde avec curiosité, logique et méthode.</p>
+						<p class="card-text fs-4">Accédez à des ressources numériques de physique, chimie, SVT et technologie. 
+												Nos contenus sont adaptés aux programmes scolaires locaux et favorisent la curiosité scientifique.</p>
 					</div>
 				</article>
 
@@ -144,7 +125,7 @@
 					</div>
 					<div class="card-body">
 						<h2 class="card-title fs-1">Enseignement interactif</h2>
-						<p class="card-text fs-4">Apprendre ensemble grâce à des cours vivants et engageants.</p>
+						<p class="card-text fs-4">Nos leçons sont enrichies de quiz, vidéos explicatives, audios, jeux pédagogiques et exercices interactifs pour un apprentissage dynamique sur mobile, tablette ou PC.</p>
 					</div>
 				</article>
 
@@ -157,146 +138,7 @@
 					</div>
 					<div class="card-body">
 						<h2 class="card-title fs-1">Travail collaboratif</h2>
-						<p class="card-text fs-4">Développer l'esprit d'équipe à travers des projets communs.</p>
-					</div>
-				</article>
-			</div>
-		</div>
-
-		{# Deuxième ligne d’activités #}
-		<div class="col-12">
-			<div
-				class="main-activity">
-				{# Activité 4 : Sport #}
-				<article class="col-md-4 alert alert-secondary mb-3 text-center" id="swim">
-					<div>
-						<svg class="py-3" width="100" height="100">
-							<use href="{{ asset('images/sprites.svg') }}#swim"></use>
-						</svg>
-					</div>
-					<div class="card-body">
-						<h2 class="card-title fs-1">Activités sportives</h2>
-						<p class="card-text fs-4">Éveiller le corps et l’esprit par le jeu et le mouvement.</p>
-					</div>
-				</article>
-
-				{# Activité 5 : Stratégie #}
-				<article class="col-md-4 alert alert-success mb-3 text-center" id="walk">
-					<div>
-						<svg class="py-3" width="100" height="100" fill="darkblue">
-							<use href="{{ asset('images/sprites.svg') }}#game"></use>
-						</svg>
-					</div>
-					<div class="card-body">
-						<h2 class="card-title fs-1">Esprit stratégique</h2>
-						<p class="card-text fs-4">Stimuler la réflexion par des jeux logiques et tactiques.</p>
-					</div>
-				</article>
-
-				{# Activité 6 : Ouverture au monde #}
-				<article class="col-md-4 alert alert-dark mb-3 text-center" id="swim2">
-					<div>
-						<svg class="py-3" width="100" height="100">
-							<use href="{{ asset('images/sprites.svg') }}#plane"></use>
-						</svg>
-					</div>
-					<div class="car-body">
-						<h2 class="card-title fs-1">Ouverture sur le monde</h2>
-						<p class="card-text fs-4">Découvrir d’autres cultures et élargir ses horizons.</p>
-					</div>
-				</article>
-			</div>
-		</div>
-	</section>
-
-	{# SECTION: Partenaires de l’école #}
-	<section class="row" id="partners">
-		<div class="text-center col-12 my-3">
-			<h2 class="fs-2 text-uppercase fw-semibold">Nos partenaires</h2>
-		</div>
-		<div class="col-12">
-			<div
-				class="partners">
-				{# Partenaire 1 #}
-				<article class="col-md-4 alert alert-secondary rounded-5">
-					<figure class="">
-						<div class="text-center">
-							<img src="{{ asset('images/partenaire/edu_connect_logo.png') }}" alt="logo d'un partenaire" width="100%" height="auto">
-						</div>
-						<figcaption class="">
-							<h3 class="fs-2">EduConnect</h3>
-							<p class="fs-4">Technologie éducative.</p>
-						</figcaption>
-					</figure>
-				</article>
-
-				{# Partenaire 2 #}
-				<article class="col-md-4 alert alert-secondary rounded-5">
-					<figure class="">
-						<div class="text-center">
-							<img src="{{ asset('images/partenaire/livreo_logo.png') }}" alt="logo d'un partenaire" width="100%" height="auto">
-						</div>
-						<figcaption>
-							<h3 class="fs-2">Livreo</h3>
-							<p class="fs-4">Ressources pédagogiques.</p>
-						</figcaption>
-					</figure>
-				</article>
-
-				{# Partenaire 3 #}
-				<article class="col-md-4 alert alert-secondary rounded-5">
-					<figure class="">
-						<div class="text-center">
-							<img src="{{ asset('images/partenaire/inno_class_logo.png') }}" alt="logo d'un partenaire" width="100%" height="auto">
-						</div>
-						<figcaption class="">
-							<h3 class="fs-2">InnoClass</h3>
-							<p class="fs-4">Solutions innovantes.</p>
-						</figcaption>
-					</figure>
-				</article>
-			</div>
-		</div>
-	</section>
-
-	{# SECTION: Présentation de l’équipe enseignante #}
-	<section class="container" id="team">
-		<div class="text-center col-12 my-3">
-			<h2 class="fs-2 text-uppercase fw-semibold">Nos équipes</h2>
-		</div>
-		<div class="col-12">
-			<div
-				class="team row justify-content-between">
-				{# Professeur de chimie #}
-				<article class="col-12 col-md-4 col-lg-3 alert alert-info mb-2">
-					<div class="d-flex align-items-center">
-						<img class="col-6 col-md" src="{{ asset('images/equip/professor_chemistry.jpg') }}" alt="Image du professeur de chimie" width="100%" height="auto">
-						<figcaption class="col-6 m-auto">
-							<h4>Professeur de chimie</h4>
-							<h4>Esther Clair</h4>
-						</figcaption>
-					</div>
-				</article>
-
-				{# Professeur de Math #}
-				<article class="col-12 col-md-4 col-lg-3 alert alert-success mb-2">
-					<div class="d-flex align-items-center">
-						<img class="col-6 col-md" src="{{ asset('images/equip/professor_math.jpg') }}" alt="L'image du professeur de Math" width="100%" height="auto">
-						<figcaption class="col-6 m-auto">
-							<h4>Professeur de Math</h4>
-							<h4>Pauline Marie</h4>
-						</figcaption>
-					</div>
-				</article>
-
-				{# Directeur #}
-				<article class="col-12 col-md-4 col-lg-3 alert alert-primary mb-2">
-					<div class="d-flex align-items-center">
-						<img class="col-6 col-md" src="{{ asset('images/equip/director.jpg') }}" alt="L'image du directeur" width="100%" height="auto">
-						<figcaption class="col-6 m-auto">
-							<h4>Directeur</h4>
-							<h4>Patrick Erick</h4>
-						</figcaption>
+						<p class="card-text fs-4">Créez des groupes de travail, échangez des documents, collaborez en temps réel sur des projets, exposés ou devoirs. L’apprentissage en équipe est au cœur de notre ENT.</p>
 					</div>
 				</article>
 			</div>
@@ -347,18 +189,18 @@
 				</div>
 			</div>
 			<div class="fs-4 form-check text-secondary">
-			    {{ form_label(formContact.gpdr) }}
+				{{ form_label(formContact.gpdr) }}
 				{{ form_widget(formContact.gpdr) }}
-			<div class="text-center my-3">
-				{{ form_row(formContact.envoyer) }}
+				<div class="text-center my-3">
+					{{ form_row(formContact.envoyer) }}
+				</div>
+				{{ form_end(formContact) }}
 			</div>
-			{{ form_end(formContact) }}
-		</div>
-	</section>
+		</section>
 
-	{# Bouton pour remonter en haut de page #}
-	{% include '_partials/_up_button.html.twig' %}
+		{# Bouton pour remonter en haut de page #}
+		{% include '_partials/_up_button.html.twig' %}
 
 
-{% endblock %}
+	{% endblock %}
 
