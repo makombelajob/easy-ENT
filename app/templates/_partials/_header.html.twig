@@ -1,0 +1,120 @@
+<header class="container">
+	<div class="row">
+		<nav
+			class="navbar navbar-expand-lg col-11 col-md-12 m-auto">
+			<!-- Début de la barre de navigation -->
+			<div class="container-fluid">
+				<a class="navbar-brand" href="{{ path('app_main') }}">
+					<img src="{{ asset('images/logo.png') }}" alt="logo du site" width="100%" height="auto"/>
+				</a>
+
+				{% include '_partials/_list_options.html.twig' %}
+				
+				<div class="d-flex align-items-center gap-2">
+					<button class="btn" id="theme-mode" type="button">
+						<svg width="40px" height="40px" fill="yellow">
+							<use href="{{ asset('images/sprites.svg') }}#light"></use>
+						</svg>
+					</button>
+
+					<!-- Burger visible uniquement en dessous de 1200px -->
+					<div id="navbar">
+						<button id="burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" class="d-xl-none">
+							<svg width="30" height="30">
+								<use href="{{ asset('images/sprites.svg') }}#burger"></use>
+							</svg>
+						</button>
+
+						<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+							<div class="offcanvas-header">
+								<h5 class="offcanvas-title" id="offcanvasLabel">easy-ENT</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+							</div>
+							<div class="offcanvas-body">
+								<ul class="list-unstyled">
+									{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+										{% if is_granted('ROLE_ADMIN') %}
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_admin')}}">Dashboard</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_admin_timer') }}">Horaires</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_admin_add_subject') }}">Matière</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_admin_add_course') }}">Cours</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_admin_school_fees') }}">Frais</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Deconnecter</a>
+											</li>
+										{% elseif is_granted('ROLE_TEACHER') %}
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_teacher')}}">Accueil</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_teacher_add_ressource') }}">Documents</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_teacher_notes') }}">Notes</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Déconnecter</a>
+											</li>
+										{% elseif is_granted('ROLE_PARENT') %}
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_parents')}}">Accueil</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_parents_show_facture') }}">Factures</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Deconnecter</a>
+											</li>
+										{% elseif is_granted('ROLE_USER') %}
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_profile') }}">Accueil</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_add_parent') }}">Ajout-Parents</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_profile') }}#contact">Contact_Admin</a>
+											</li>
+											<li>
+												<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Deconnecter</a>
+											</li>
+										{% endif %}
+									{% else %}
+										<li>
+											<a class="text-decoration-none fs-3" class="active" href="{{ path('app_main')}}">Accueil</a>
+										</li>
+										<li>
+											<a class="text-decoration-none fs-3" class="" href="{{ path('app_about') }}">Apropos</a>
+										</li>
+										<li>
+											<a class="text-decoration-none fs-3" class="" href="{{ path('app_register') }}">Inscription</a>
+										</li>
+										<li>
+											<a class="text-decoration-none fs-3" class="" href="{{ path('app_login') }}">Connexion</a>
+										</li>
+										<li>
+											<a class="text-decoration-none fs-3" class="" href="{{ path('app_main') }}#contact">Contact</a>
+										</li>
+									{% endif %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</nav>
+	</div>
+	<!-- Fin de la barre de navigation -->
+</header>
+

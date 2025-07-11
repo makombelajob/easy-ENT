@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ app.user.firstname }}
+	{{ app.user.lastname}}
+{% endblock %}
+
+
+{% block body %}
+	<section class="col-12" id="student_courses">
+		<div class="text-center">
+			<h1 class="text-uppercase text-primary">Tous les cours suivis</h1>
+		</div>
+		<div class="row">
+		{% if courses is not empty %}
+			{% for course in courses %}
+				<article class=" col-11 col-md-3 m-auto alert alert-primary">
+					<h2>{{ course.name }}</h2>
+					<p>{{ course.day }}</p>
+					<p>
+						<time datetime="{{ course.startedAt|date('Y-m-d\TH:i') }}">{{ course.startedAt|date('Y-m-d\TH:i') }}</time>
+					</p>
+					<p>
+						<time datetime="{{ course.endAt|date('Y-m-d\TH:i') }}">{{ course.endAt|date('Y-m-d\TH:i') }}</time>
+					</p>
+					<p>Salle numéro : {{ course.room }}</p>
+				</article>
+			{% endfor %}
+		{% else %}
+			<div class="alert alert-danger fs-4 col-11 m-auto text-center">
+				Aucun cours suivi pour l'instant
+			</div>
+		{% endif %}
+		</div>
+	</section>
+{% endblock %}
+

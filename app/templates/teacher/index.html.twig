@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil Enseignant
+{% endblock %}
+
+{% block body %}
+
+	<section class="row d-flex justify-content-center align-items-center min-vh-100">
+		<div class="text-center my-3">
+			<h1 class="text-primary text-uppercase fs-1">Liste des élèves</h1>
+		</div>
+		<div class="col-11 col-md-12 m-auto alert alert-primary">
+			<div id="tableList">
+				<table border="1" class="table table-striped table-hover alert alert-secondary">
+					<thead class="fs-4">
+						<tr>
+							<th>Nom</th>
+							<th>Prénom</th>
+							<th>Cours</th>
+						</tr>
+					</thead>
+					<tbody class="fs-4">
+						{% for student in students %}
+							<tr>
+								<td>{{ student.lastname }}</td>
+								<td>{{ student.firstname }}</td>
+								<td>
+									{% for course in student.courses %}
+										{{ course.name }}
+										{% if not loop.last %},
+										{% endif %}
+									{% else %}
+										<em>Aucun cours suivis</em>
+									{% endfor %}
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>	
+		</div>
+	</section>
+{% endblock %}
+

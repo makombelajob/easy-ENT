@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=http://127.0.0.1:8081/index.php?route=/database/export&db=easy_ENT
+HostUrl=http://127.0.0.1:8081/index.php?route=/export

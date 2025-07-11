@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ app.user.firstname }}
+	{{ app.user.lastname}}
+{% endblock %}
+
+{% block body %}
+	<section class="col-12" id="student_info">
+		<div class="text-center">
+			<h1>Bienvenu
+				<span class="text-uppercase text-primary">{{ app.user.lastname }}</span>
+			</h1>
+		</div>
+		<article class="alert alert-info ">
+			<div class="row  d-flex justify-content-between align-items-center gap-2">
+				<div class="col-4" id="profile">
+					<img src="{{ asset('uploads/avatars/' ~ (app.user.avatar ?? 'default-avatar.webp')) }}" alt="image de profile de {{ app.user.lastname }}{{ app.user.firstname }}" width="100" heigth="auto" class="col rounded-circle profile-image">
+					<a class="btn btn-sm btn-primary edit-link" href="{{ path('app_upload_avatar') }}" >Edit</a>
+				</div>
+				<figcaption class="col-7">
+					<h3>{{ app.user.lastname }}
+						{{ app.user.firstname }}</h3>
+					<p>Ceci est votre page d'accueil, Bienvenu parmis nous</p>
+				</figcaption>
+			</div>
+		</article>
+		<article class="text-center bg-warning rounded-2">
+			<h2>Informations générales</h2>
+			<p class="fs-2">Prochaines vacances du 05 mai au 15 mai</p>
+		</article>
+		<div class="col-12">
+			{% if parents is not empty %}
+				{% for parent in parents %}
+				<article class="alert alert-primary">
+					<h2 class="fs-1">
+						<span class="text-uppercase">Responsable :
+							{{ parent.lastname }}
+							{{ parent.firstname }}</span>
+					</h2>
+					<h3 class="text-fs-4">{{ parent.email }}</h3>
+					<p>Votre responsable en cas de problème et recevra aussi les factures obligatoires</p>
+				</article>
+				{% endfor %}
+			{% else %}
+				<div class="alert alert-warning">
+					<p>Vous n'avez aucun responsable. Il est obligatoire d'ajouter au moins un</p>
+					<div class="text-center">
+						<a class="btn btn-primary" href="{{ path('app_add_parent') }}">Ajouter un responsable</a>
+					</div>
+				</div>
+			{% endif %}
+			{% for classe in classes %}
+				<article class="alert alert-primary">
+					<h2 class="fs-1">
+						<span class="text-uppercase">Class :
+							{{ classe.name }}</span>
+					</h2>
+					<h3>Niveau:
+						{{ classe.level }}</h3>
+				</article>
+			{% endfor %}
+			{% set coursDisplay = [] %}
+
+			{% for classe in app.user.classes %}
+				{% for cours in classe.courses %}
+					{% if cours not in coursDisplay %}
+						{% set coursDisplay = coursDisplay|merge([cours]) %}
+					{% endif %}
+				{% endfor %}
+			{% endfor %}
+
+			{% if coursDisplay is not empty or app.user.results is not empty %}
+				{% for cours in coursDisplay %}
+					<article class="alert alert-secondary rounded-5 p-3 my-3">
+						<h2>{{ cours.name }}</h2>
+						<p>Début :
+							<time datetime="">{{ cours.startAt|date }}</time>
+						</p>
+						<p>Fin :
+							<time datetime="">{{ cours.endAt|date }}</time>
+						</p>
+						<p>salle :
+							{{ cours.room }}</p>
+						<p>
+							Proffesseur :
+
+						</p>
+					</article>
+				{% endfor %}
+
+				<div class="row justify-content-center">
+					{% for result in app.user.results %}
+						<div class="col-12 col-md-4 mb-3 d-flex justify-content-center">
+							<article class="alert alert-primary w-100 text-center">
+								<h2>{{ result.note }}</h2>
+								<h3>{{ result.remark }}</h3>
+							</article>
+						</div>
+					{% endfor %}
+				</div>
+			{% else %}
+				<div class="alert alert-danger text-center">
+					<p class="fs-3">Aucun cours ni resultat disponible</p>
+				</div>
+			{% endif %}
+		</div>
+	</section>
+	<section class="col-12 alert alert-warning">
+		<h2 class="fs-1 text-center text-uppercase my-3">Contactez la secrétaire</h2>
+		<div class="" id="contact">
+			{{ form_start(studentMessage) }}
+			<div class="fs-2 my-2">
+				{{ form_row(studentMessage.subject) }}
+			</div>
+			<div class="fs-2 my-2">
+				{{ form_row(studentMessage.message) }}
+			</div>
+			<div class="text-center my-3">
+				{{ form_row(studentMessage.gpdr) }}
+			</div>
+			<div class="text-center my-3">
+				{{ form_row(studentMessage.envoyer) }}
+			</div>
+			{{ form_end(studentMessage) }}
+		</div>
+	</section>
+{% endblock %}
+

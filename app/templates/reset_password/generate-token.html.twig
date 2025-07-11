@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+
+{% block body %}
+<div class="row d-flex justify-content-center align-items-center min-vh-100">
+
+		<div method="post" class="alert alert-primary col-11 col-md-8 m-auto">
+			{% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label == 'error' ? 'danger' : 'label' }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+			<div class="col-12 text-center">
+				<h1 class="fs-1 text-uppercase fw-semibold">Réinitialiser le mots de passe</h1>
+			</div>
+            {{ form_start(formResetPass)}}
+			<div class="fs-3">
+                {{ form_label(formResetPass.email)}}
+                {{ form_widget(formResetPass.email)}}
+                <div class="invalid-feedback">
+                    Veuillez entrer un email valide
+                </div>
+			</div>
+			<div class="text-center my-3">
+                {{ form_row(formResetPass.envoyer)}}				
+			</div>
+            {{ form_end(formResetPass)}}
+		</div>
+	</div>
+{% endblock %}
+

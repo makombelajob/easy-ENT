@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}admin dashboard
+{% endblock %}
+
+{% block body %}
+	<section class="row  d-flex justify-content-center align-items-center min-vh-100">
+		<div class="col-12 text-center">
+			<h1 class="fs-1 text-black fw-bolder">Admin DashBoard</h1>
+		</div>
+		<div class="col-12">
+			<div id="admin_dashboard">
+			{# Affichage des utilisateurs avec le rôle user #}
+				{% for user in users %}
+					{% if 'ROLE_USER' in user.roles and 'ROLE_ADMIN' not in user.roles %}
+                        {% if user.courses|length == 0 %}
+						<article class="alert alert-warning col-12 m-auto col-md-4">
+							<h2>{{ user.lastname }}
+								{{ user.firstname }}</h2>
+							<p>n'est affecté à aucun cours pour le moment.</p>
+							<div class="d-flex justify-content-between mt-3">
+								<a class="btn btn-danger" href="{{ path('app_admin_gerer', {id:user.id}) }}">Gerer</a>
+							</div>
+						</article>
+					    {% else %}
+						<article class="alert alert-danger col-12 m-auto col-md-4">
+							<h2>{{ user.lastname }}
+								{{ user.firstname }}</h2>
+							<p>{{ user.email }}</p>
+							<time>{{ user.registerAt | date }}</time>
+							<div class="d-flex justify-content-between mt-3">
+								<a class="btn btn-danger" href="{{ path('app_admin_gerer', {id:user.id}) }}">Gerer</a>
+							</div>
+						</article>
+                        {% endif %}
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	{# Affichage de classes déjà existants #}
+	<section class="row">
+		<div class="col-12 text-center my-3">
+			<h1 class="fs-1 text-black fw-bolder">Toutes les classes</h1>
+		</div>
+		<div class="col-12 col-md-11 m-auto" id="all_classes">
+			{% for class in classes %}
+				<article class="alert alert-warning">
+					<h2>{{ class.name }}</h2>
+					<p>{{ class.level }}</p>
+				</article>
+			{% endfor %}
+		</div>
+	</section>
+	{# Affichage des matières principales #}
+	<section class="row">
+		<div class="col-12 text-center">
+			<h1 class="fs-1 text-black fw-bolder">Principals cours</h1>
+		</div>
+		<div class="col-12 col-md-11 m-auto" id="all_subjects">
+			{% for subject in subjects %}
+				<article class="alert alert-info">
+					<h2>{{ subject.name }}</h2>
+				</article>
+			{% endfor %}
+		</div>
+	</section>
+	{# affichage de message de contact envoyer par les utilisateur non-connectés #}
+	<section class="row">
+		<div class="col-12 text-center">
+			<h1 class="fs-1 text-black fw-bolder">Les messages</h1>
+		</div>
+		<div class="col-11 m-auto">
+			{% for contact in contacts %}
+				<article class="alert alert-success d-flex justify-content-between">
+					<div>
+						<h2>{{ contact.email }}</h2>
+						<p>{{ contact.subject }}</p>
+						<p>{{ contact.message }}</p>
+						<p>{{ contact.sendAt | date }}</p>
+					</div>
+					<div>
+						<a href="{{ path('app_admin_delete_message', {id:contact.id}) }}">
+							<svg class="py-3" width="70" height="70">
+								<use href="{{ asset('images/sprites.svg') }}#delete"></use>
+							</svg>
+						</a>
+					</div>
+				</article>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}
+

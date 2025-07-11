@@ -1,0 +1,9 @@
+<h1>Paiement réussi</h1>
+{% if pdfUrl is defined %}
+	<p>
+		<a href="{{ pdfUrl }}" download="facture.pdf">
+			Télécharger votre facture (PDF)
+		</a>
+	</p>
+{% endif %}
+

@@ -1,0 +1,75 @@
+<div class="d-none d-lg-flex flex-grow-1 justify-content-center align-items-center" id="list_inline">
+	<ul class="list-unstyled d-flex gap-4 mb-0">
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			{% if is_granted('ROLE_ADMIN') %}
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_admin')}}">Dashboard</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_admin_timer') }}">Horaires</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_admin_add_subject') }}">Matière</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_admin_add_course') }}">Cours</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_admin_school_fees') }}">Frais</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Deconnecter</a>
+				</li>
+			{% elseif is_granted('ROLE_TEACHER') %}
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_teacher')}}">Accueil</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_teacher_add_ressource') }}">Documents</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_teacher_notes') }}">Notes</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Deconnecter</a>
+				</li>
+			{% elseif is_granted('ROLE_PARENT') %}
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_parents')}}">Accueil</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_parents_show_facture') }}">Factures</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Deconnecter</a>
+				</li>
+			{% elseif is_granted('ROLE_USER') %}
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_profile') }}">Accueil</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_add_parent') }}">Ajout-Parent</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_profile') }}#contact">Contact_Admin</a>
+				</li>
+				<li>
+					<a class="text-decoration-none fs-3" href="{{ path('app_logout') }}">Deconnecter</a>
+				</li>
+			{% endif %}
+		{% else %}
+			<li>
+				<a class="text-decoration-none fs-3" class="active" href="{{ path('app_main')}}">Accueil</a>
+			</li>
+			<li>
+				<a class="text-decoration-none fs-3" class="" href="{{ path('app_about') }}">Apropos</a>
+			</li>
+			<li>
+				<a class="text-decoration-none fs-3" class="" href="{{ path('app_register') }}">Inscription</a>
+			</li>
+			<li>
+				<a class="text-decoration-none fs-3" class="" href="{{ path('app_login') }}">Connexion</a>
+			</li>
+		{% endif %}
+	</ul>
+</div>

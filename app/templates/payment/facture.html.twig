@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Facture</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				font-size: 14px;
+			}
+			h1 {
+				text-align: center;
+			}
+			table {
+				width: 100%;
+				margin-top: 20px;
+				border-collapse: collapse;
+			}
+			td,
+			th {
+				padding: 8px;
+				border: 1px solid #ccc;
+			}
+			.total {
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Facture de paiement</h1>
+
+		<p>
+			<strong>Date :</strong>
+			{{ facture.createdAt|date('d/m/Y') }}</p>
+
+		<h2>Informations du payeur</h2>
+		<p>
+			<strong>Nom :</strong>
+			{{ facture.users.lastName }}</p>
+		<p>
+			<strong>Prénom :</strong>
+			{{ facture.users.firstName }}</p>
+
+		<h2>Détails du paiement</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Service</th>
+					<th>Montant (€)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ facture.name }}</td>
+					<td>{{ facture.amount|number_format(2, '.', ' ') }}</td>
+				</tr>
+				<tr>
+					<td class="total">Total</td>
+					<td class="total">{{ facture.amount|number_format(2, '.', ' ') }}
+						€</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
+

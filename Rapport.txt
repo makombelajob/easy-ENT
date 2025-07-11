@@ -1,0 +1,129 @@
+1. Présentation du service
+
+easy-ENT est une plateforme numérique éducative destinée à la gestion scolaire, la communication et le suivi pédagogique. Elle vise à moderniser les établissements scolaires en facilitant la gestion des utilisateurs (élèves, enseignants, parents, administrateurs), des cours, des emplois du temps, des notes, des absences, ainsi que la communication interne. La solution est pensée pour les réalités africaines, avec une accessibilité mobile, une utilisation possible hors-ligne, et une simplicité d’utilisation adaptée à tous les niveaux scolaires.
+
+2. Cahier des charges ou Expression des besoins
+
+- Permettre la gestion centralisée des utilisateurs et des profils (élèves, enseignants, parents, administrateurs).
+- Offrir un espace personnel à chaque utilisateur pour consulter ses informations, cours, notes, factures, etc.
+- Gérer les cours, matières, emplois du temps, absences et résultats scolaires.
+- Intégrer une messagerie interne et un système de notifications (email).
+- Permettre la gestion des paiements et factures scolaires (intégration Stripe).
+- Garantir la sécurité et la confidentialité des données.
+- Proposer une interface responsive adaptée au web et au mobile.
+- Faciliter l’installation et le déploiement rapide, avec support local.
+Exigences fonctionnelles détaillées :
+
+- Gestion des utilisateurs :
+    - Création, modification et suppression de comptes pour les élèves, enseignants, parents et administrateurs.
+    - Attribution de rôles et de permissions spécifiques à chaque profil.
+    - Possibilité pour chaque utilisateur de personnaliser son profil (photo, informations personnelles, mot de passe).
+    - Suivi des connexions et gestion de la sécurité des accès.
+
+- Gestion pédagogique :
+    - Création et organisation des cours, matières et classes.
+    - Attribution des enseignants aux matières et classes correspondantes.
+    - Gestion des emplois du temps avec visualisation par semaine, par classe et par enseignant.
+    - Saisie, modification et consultation des notes et résultats scolaires.
+    - Génération automatique des bulletins de notes et relevés de résultats.
+    - Gestion des absences avec possibilité de justification par les parents ou l’administration.
+
+- Communication et notifications :
+    - Système de messagerie interne permettant les échanges entre élèves, enseignants, parents et administrateurs.
+    - Envoi automatique de notifications par email lors d’événements importants (nouveau cours, nouvelle note, facture disponible, message reçu).
+    - Formulaire de contact pour l’assistance ou les demandes spécifiques.
+
+- Gestion administrative et financière :
+    - Génération et gestion des factures scolaires (inscription, scolarité, activités, etc.).
+    - Intégration du paiement en ligne via Stripe, avec suivi des paiements et relances automatiques.
+    - Tableau de bord administratif pour le suivi des paiements, des absences, des résultats et des messages.
+
+- Accessibilité et adaptabilité :
+    - Interface responsive adaptée à tous les supports (ordinateur, tablette, smartphone).
+    - Fonctionnement en mode hors-ligne pour garantir l’accès même en cas de coupure Internet.
+    - Multilinguisme : prise en charge du français et possibilité d’ajouter d’autres langues locales.
+    - Installation rapide sur serveur local ou cloud, avec scripts d’automatisation (Docker, Composer).
+
+- Sécurité et confidentialité :
+    - Chiffrement des données sensibles (mots de passe, informations personnelles).
+    - Gestion fine des droits d’accès selon le profil utilisateur.
+    - Sauvegarde régulière de la base de données et possibilité de restauration.
+    - Conformité avec les réglementations locales sur la protection des données scolaires.
+
+- Support et évolutivité :
+    - Documentation technique et guides utilisateurs intégrés à la plateforme.
+    - Système de tickets pour le support technique et le suivi des incidents.
+    - Architecture modulaire permettant l’ajout de nouvelles fonctionnalités (API, intégration d’outils tiers).
+
+Exemples de scénarios d’utilisation :
+
+- Un enseignant se connecte, consulte son emploi du temps, saisit les notes de ses élèves et envoie un message collectif aux parents.
+- Un parent reçoit une notification par email l’informant de la disponibilité du bulletin de son enfant, se connecte à son espace personnel, consulte les résultats et règle la facture en ligne.
+- Un administrateur crée une nouvelle classe, y affecte des élèves et des enseignants, puis génère les emplois du temps automatiquement.
+- Un élève accède à ses cours, télécharge des documents, consulte ses notes et envoie une question à son enseignant via la messagerie interne.
+
+Points forts du projet easy-ENT (issus du projet ouvert) :
+
+- Accessibilité mobile et offline, adaptée aux réalités africaines.
+- Sécurité renforcée et confidentialité des données.
+- Installation rapide et support local.
+- Interface simple, intuitive et multilingue.
+- Intégration de modules essentiels pour la gestion scolaire moderne (notes, absences, paiements, communication).
+
+Résumé des attentes :
+
+Le projet easy-ENT doit fournir une solution complète, sécurisée et facile à utiliser pour la gestion scolaire, la communication et le suivi pédagogique, tout en restant accessible et adaptée aux contextes locaux africains. L’accent est mis sur la simplicité, la rapidité de déploiement, la robustesse et la capacité à fonctionner même en environnement à faible connectivité.
+
+3. Contraintes du projet, livrables attendus
+
+Contraintes :
+- Respect des normes de sécurité et de confidentialité des données scolaires.
+- Adaptation à des environnements à faible connectivité (mode offline).
+- Simplicité d’utilisation pour des utilisateurs peu technophiles.
+- Multilinguisme et adaptation aux contextes francophones africains.
+
+Livrables :
+- Application web fonctionnelle (front-end et back-end).
+- Documentation technique et utilisateur.
+- Scripts d’installation et de déploiement (Docker, Composer).
+- Jeux de tests automatisés.
+- Maquettes et schémas d’architecture.
+
+4. Environnement humain et technique, Objectifs de qualité
+
+Environnement humain :
+- Utilisateurs finaux : élèves, enseignants, parents, administrateurs scolaires.
+- Équipe technique : développeurs back-end, front-end, DevOps, support technique.
+
+Environnement technique :
+- PHP >= 8.2, Symfony, Composer.
+- MySQL ou PostgreSQL pour la base de données.
+- Docker & Docker Compose pour le déploiement.
+- Stripe pour la gestion des paiements.
+- Mailhog pour la gestion des emails en développement.
+
+Objectifs de qualité :
+- Robustesse, sécurité, performance.
+- Accessibilité sur tous supports (PC, tablette, mobile).
+- Facilité de maintenance et d’évolution.
+
+5. Présentation de la maquette de l’application, adaptation web et adaptation web mobile
+
+L’application propose une interface épurée, avec un tableau de bord personnalisé selon le profil utilisateur. Les menus sont accessibles via une barre latérale (web) ou un menu hamburger (mobile). Les pages principales incluent : tableau de bord, gestion des cours, notes, absences, messagerie, factures, et profils.
+
+L’adaptation mobile se fait via un design responsive, garantissant une expérience utilisateur fluide sur smartphones et tablettes, avec des boutons larges et une navigation simplifiée.
+
+6. Schéma de l’enchaînement des maquettes de l’application
+
+[Diagramme textuel]
+- Page de connexion
+    -> Tableau de bord (selon profil)
+        -> Accès aux modules : Cours | Notes | Absences | Messagerie | Factures | Profil
+            -> Détail d’un module (ex : consultation d’un cours)
+                -> Actions contextuelles (ex : envoyer un message, télécharger un document)
+    -> Déconnexion
+
+7. Extraits de code d’interfaces utilisateurs statiques
+
+Exemple (Twig) : `app/templates/dashboard.html.twig`
+

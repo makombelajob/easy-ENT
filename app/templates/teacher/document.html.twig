@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Espace Enseignant{% endblock %}
+
+{% block body %}
+
+    <section class="row d-flex justify-content-center align-items-center min-vh-100">
+        <div class="col-11 col-md-12 m-auto alert alert-secondary">
+            <div class="my-3 text-center">
+                <h1 class="fs-1 text-uppercase text-primary">Ajouter un document</h1>
+            </div>
+            <div>
+                {{ form_start(form) }}
+                <div class="fs-2 my-3">
+                    {{ form_row(form.fileName) }}
+                </div>
+                <div class="fs-2 my-3">
+                    {{ form_row(form.file) }}
+                </div>
+                <div class="fs-2 my-3">
+                    {{ form_row(form.fileType) }}
+                </div>
+                <div class="fs-2 my-3">
+                    {{ form_row(form.courses) }}
+                </div>
+                <div class="text-center my-3">
+                    {{ form_row(form.ajouter) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

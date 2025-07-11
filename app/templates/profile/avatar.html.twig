@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ app.user.firstname }}
+	{{ app.user.lastname}}
+{% endblock %}
+
+
+{% block body %}
+	<section class="row {#d-flex justify-content-center align-items-center min-vh-100#}" id="student_courses">
+		<div class="text-center">
+			<h1 class="text-uppercase text-primary">Changer votre avatar</h1>
+		</div>
+		<div class="alert alert-danger">
+			{{ form_start(form)}}
+			<div class="fs-4">
+				{{ form_row(form.avatar) }}
+			</div>
+			<div class="text-center my-3">
+				{{ form_row(form.changer) }}
+			</div>
+			{{ form_end(form)}}
+		</div>
+	</section>
+{% endblock %}
+

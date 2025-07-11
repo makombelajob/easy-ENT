@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ app.user.firstname }}
+	{{ app.user.lastname}}
+{% endblock %}
+
+
+{% block body %}
+	<section class="row d-flex justify-content-center align-items-center min-vh-100 .bg-body-tertiary" id="student_courses">
+		<div class="text-center">
+			<h1 class="text-uppercase text-primary">Page Non trouvée </h1>
+            <h2 class="text-uppercase text-danger">Erreur : {{ status_code }}</h2>
+		</div>
+		<div class="col-4 col-md-4 m-auto alert alert-danger text-center">
+			<svg class="py-3" width="100" height="100">
+				<use href="{{ asset('images/sprites.svg') }}#timer"></use>
+			</svg>
+		</div>
+	</section>
+{% endblock %}
+
