@@ -1,0 +1,9 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/symfony_test/Cpanel/easy-ENT/
+    - /bn/cp -R * $DEPLOYPATH
+  exclude:
+    - .git
+    - .github
+    - /mysql
+    - .idea

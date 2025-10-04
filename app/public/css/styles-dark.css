@@ -16,13 +16,13 @@ body h3,
 body h4,
 body h5 {
   font-family: "Ubuntu Sans", sans-serif;
-  color: #fafafa !important;
+  color: rgb(249.5, 249.5, 249.5) !important;
 }
 body a {
-  color: #84b1f9;
+  color: rgb(132.1414634146, 176.6463414634, 249.3585365854);
 }
 body a:hover {
-  color: #cddffd;
+  color: rgb(205.2829268293, 223.2926829268, 252.7170731707);
 }
 body header {
   margin-inline: 0.5rem;

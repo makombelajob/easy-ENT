@@ -23,7 +23,16 @@ body {
         &:hover {
           color: lighten($accent-color, 30%);
         }
-      }
+    }
+    #particles-main {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1; /* en arrière-plan */
+    }
+
     header {
         margin-inline: 0.5rem;
         nav {
@@ -86,6 +95,16 @@ body {
     }
 
     main {
+        #particles-main {
+            width: 100%;
+            height: 400px;
+            background: #000;
+        }
+        #hero{
+            #carousel{
+                //margin-inline: 2rem !important;
+            }
+        }
         #a-propos {
             // En cas de personnalisation
         }
@@ -95,6 +114,11 @@ body {
                 width: 60px; /* Largeur fixée pour les logos/avatars partenaires */
                 border-radius: 50%; /* Images rondes */
             }
+        }
+        #contact{
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         #upButton {

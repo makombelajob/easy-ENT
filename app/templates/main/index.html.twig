@@ -11,7 +11,7 @@
 {# Début du bloc principal "body" qui contient tout le contenu visible #}
 {% block body %}
 	{# SECTION: Titre principal de la page #}
-	<section class="row">
+	<section class="row" id="hero">
         {# ce h1 doit être virée
 		<div class="col-12 text-center my-3">
 			<h1 class="fs-1 fw-semibold">easy-
@@ -19,8 +19,7 @@
 			</h1>
 		</div>#}
 		{# SECTION: Carousel (diaporama d’images) #}
-		<div
-			id="carousel" class="carousel slide">
+		<div id="carousel" class="carousel slide">
 			{# Boutons de navigation du carousel #}
 			<div class="carousel-indicators">
 				<button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -29,7 +28,7 @@
 			</div>
 
 			{# Contenu du carousel (images) #}
-			<div class="carousel-inner mt-2">
+			<div class="carousel-inner px-3 px-md-4 px-lg-5 mt-2">
 				<div class="carousel-item active">
                     <article class="col-12 col-md-1O m-auto alert alert-primary mb-3 text-center" id="atom">
                         <div>
@@ -134,10 +133,10 @@
 
 	{# SECTION: Carte de localisation Google Maps #}
 	<section class="row" id="address">
-		<div class="text-center col-12 my-3">
+		<div class="text-center col-12 my-3 ">
 			<h2 class="fs-2 text-uppercase fw-semibold">Notre Localisation</h2>
 		</div>
-		<div class="col-12 m-auto">
+		<div class="col-12 m-auto px-3 px-md-4 px-lg-5 mt-2">
 			<iframe class="w-100" src="https://www.google.com/maps/embed?pb=..." width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 		</div>
 	</section>
@@ -181,8 +180,8 @@
 				<div class="text-center my-3">
 					{{ form_row(formContact.envoyer) }}
 				</div>
-				{{ form_end(formContact) }}
 			</div>
+			{{ form_end(formContact) }}
 		</section>
 
 		{# Bouton pour remonter en haut de page #}
