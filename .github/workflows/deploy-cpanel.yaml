@@ -27,7 +27,7 @@ jobs:
           protocol: ftps                           # FTPS explicite
           port: 21                                 # Port FTP standard
           local-dir: ./app/                        # chemin relatif dans le repo
-          server-dir: ./sites/ent-facile.fr/
+          server-dir: /sites/ent-facile.fr/
           exclude: |
             **/.git*
             **/node_modules/*

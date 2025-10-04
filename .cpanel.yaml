@@ -4,6 +4,5 @@ deployment:
     - /bn/cp -R * $DEPLOYPATH
   exclude:
     - .git
-    - .github
     - /mysql
     - .idea
