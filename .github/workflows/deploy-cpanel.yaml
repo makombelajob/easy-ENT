@@ -34,8 +34,7 @@ jobs:
             **/.git*
             **/node_modules/*
             **/*.map
-            **/*.jpg:Zone.Identifier
-            **/*.png:Zone.Identifier
+            **/*:Zone.Identifier
           dry-run: false
           verbose: true
           timeout: 60000
