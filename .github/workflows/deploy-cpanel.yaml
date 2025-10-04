@@ -26,6 +26,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}    # ton mot de passe
           protocol: ftps                           # FTPS explicite
           port: 21                                 # Port FTP standard
+          secure: true
+          ftp-passive: true
           local-dir: ./app/                        # chemin relatif dans le repo
           server-dir: /sites/ent-facile.fr/
           exclude: |
@@ -33,3 +35,4 @@ jobs:
             **/node_modules/*
           dry-run: false
           verbose: true
+          timeout: 60000
